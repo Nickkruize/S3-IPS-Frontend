@@ -14,11 +14,9 @@ export class ProductsComponent implements OnInit {
   constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
 
   product = {} as Product;
-  products = {} as Productlist;
 
   ngOnInit(): void {
     this.getProductById();
-    this.getProducts();
   }
 
   getProductById(): void {
@@ -26,14 +24,6 @@ export class ProductsComponent implements OnInit {
     this.productService.getProductById(id)
     .subscribe((data) => {
       this.product = data;
-    })
-  }
-
-  getProducts():void{
-    this.productService.getProducts()
-    .subscribe((data) => {
-      this.products = data;
-      console.log(this.products);
     })
   }
 
