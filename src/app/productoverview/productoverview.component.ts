@@ -5,28 +5,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Productlist } from '../Interfaces/productlist';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-productoverview',
+  templateUrl: './productoverview.component.html',
+  styleUrls: ['./productoverview.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class ProductoverviewComponent implements OnInit {
 
   constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) { }
 
-  product = {} as Product;
   products = {} as Productlist;
 
   ngOnInit(): void {
-    this.getProductById();
     this.getProducts();
-  }
-
-  getProductById(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.productService.getProductById(id)
-    .subscribe((data) => {
-      this.product = data;
-    })
   }
 
   getProducts():void{
